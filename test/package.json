@@ -1,0 +1,14 @@
+{
+  "name": "app-name-short",
+  "longname": "My Application Name",
+  "namespace": "com.company.app-name-short",
+  "version": "2.0.1",
+  "description": "App description, no more than 50 characters",
+  "author": "Company Name, or Your Name",
+  "sources": {
+    "directory":"."
+  },
+  "main": "main.js",
+  "license": "MIT",
+  "copyright": "2014 True Interactions"
+}

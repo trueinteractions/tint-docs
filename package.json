@@ -1,0 +1,23 @@
+{
+  "name": "Documentary",
+  "version": "0.0.1",
+  "description": "Classy Documentation Generator",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/trueinteractions/documentary"
+  },
+  "scripts": {
+    "build": "jsdoc -c config.conf"
+  },
+  "bugs": {
+    "url": "http://github.com/trueinteractions/documentary/issues"
+  },
+  "dependencies":{
+    "jsdoc":"3.3.0-alpha8",
+    "json-prettify":"*"
+  },
+  "homepage": "http://github.com/trueinteractions/documentary",
+  "keywords": [],
+  "author": "True Interactions",
+  "license": "MIT"
+}

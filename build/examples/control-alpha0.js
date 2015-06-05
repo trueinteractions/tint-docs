@@ -1,0 +1,33 @@
+require('Common'); // include defaults, creates application context.
+var win = new Window(); // create a new window.
+win.visible = true; // make the window visible.
+var dateWell = new DateWell();
+win.title = "Date well should be 0.5 alpha.";
+dateWell.style = "clock";
+dateWell.range = true;
+win.appendChild(dateWell);
+dateWell.left = dateWell.top = 0;
+dateWell.width = '300px';
+dateWell.alpha = 0.5; // Set our newly added component to 50% visible.
+setTimeout(function() {	
+	var file = process.argv[1];
+	var fs = require('fs');
+	process.argv[2]='tests';
+	var utils = require('../../../Tint/test/tools/utilities.js');
+	var outfile = file.replace('examples/','images/').replace('examples\\','images\\').replace('.js','');
+	var os = require('os');
+	var market = "";
+	var ismac = os.platform().toLowerCase() == "darwin";
+	if(ismac && os.release().indexOf("12.") > -1) market = "mountainlion";
+	if(ismac && os.release().indexOf("13.") > -1) market = "mavericks";
+	if(ismac && os.release().indexOf("14.") > -1) market = "yosemite";
+	if(!ismac && os.release().indexOf("6.") > -1) market = "win7";
+	if(!ismac && os.release().indexOf("7.") > -1) market = "win8";
+	
+utils.writeImage(utils.takeSnapshotOfControl(dateWell),outfile+'_'+market+'_0_dateWell.png');
+utils.writeImage(utils.takeSnapshotOfWindow(win),outfile+'_'+market+'_1_window.png');
+	//utils.takeSnapshotOfCurrentWindow(outfile+'_'+market+'_topwindow.png');
+	//utils.takeSnapshotOfActiveScreen(outfile+'_'+market+'_screen.png');
+	//fs.writeFileSync('tmp',outfile+'_'+market+'_screen.png');
+	process.exit(0);
+},1000);
