@@ -98,6 +98,8 @@
         
         <a class="item" href="Scroll.html"> Scroll </a>
         
+        <a class="item" href="SecureTextInput.html"> SecureTextInput </a>
+        
         <a class="item" href="SelectInput.html"> SelectInput </a>
         
         <a class="item" href="Slider.html"> Slider </a>
@@ -443,6 +445,110 @@
 
           </div>
         
+          <div class="title" id="isRegisteredForFileType"> 
+            <i class="dropdown icon"></i> isRegisteredForFileType(filetype)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Checks to see if the application is responsible for handling open requests from
+             the operating system for the specified file type extension (e.g., jpg, txt).
+             Returns a true or false boolean to indicate whether the application is registered
+             for the file type.  Note: this method has undefined behavior when the application
+             has not been bundled or packaged.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">application.isRegisteredForFileType(filetype)</code></pre>
+            </div>
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>filetype</td>
+                  <td class="fake-type">string</td>
+                  <td>A file extention without the leading period (e.g., txt, jpg)</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          
+            <h5>Returns</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td class="fake-type">boolean</td>
+                  <td>A true or false value if the file type is registered</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          </div>
+        
+          <div class="title" id="isRegisteredForScheme"> 
+            <i class="dropdown icon"></i> isRegisteredForScheme(scheme)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Checks to see if the application is responsible for handling open URI requests from
+             the operating system for the specified scheme (e.g., http, ftp, https, etc).
+             Returns a true or false boolean to indicate whether the application is registered
+             for the scheme.  Note: this method has undefined behavior when the application
+             has not been bundled or packaged.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">application.isRegisteredForScheme(scheme)</code></pre>
+            </div>
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>scheme</td>
+                  <td class="fake-type">string</td>
+                  <td>A URI scheme (e.g., http, https, ftp, mailto, tel, etc)</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          
+            <h5>Returns</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td class="fake-type">boolean</td>
+                  <td>A true or false value if the scheme is registered</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          </div>
+        
           <div class="title" id="paste"> 
             <i class="dropdown icon"></i> paste()
           </div>
@@ -484,6 +590,67 @@
             
 
           
+
+          </div>
+        
+          <div class="title" id="registerFileType"> 
+            <i class="dropdown icon"></i> registerFileType(filetype)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Registers for the specified file type by its extension (e.g., txt, jpg, png). If successful
+             the application is launched (if not running) and the application's 'open' event is fired with
+             the location of the file when the user requests the file to be opened through the OS. This
+             is an expensive operation and should be run sparingly (usually only on install). If
+             the application is successfully assigned to the file type the method returns true,
+             otherwise false.  This has undefined behavior if the application is not packaged or
+             bundled. Note, operating systems may reserve and protect specific file types from 
+             being re-assigned for security and user experience reasons. This only needs to be
+             executed once in the life time of the application being installed on the system. In
+             addition applications that misbehave may find the OS will ignore these requests. It's
+             generally best practice to check if the registered file type is already assigned 
+             (using isRegisteredForFileType) before requesting assignment. As a general courtesy, 
+             ask the user to become the default handler for a file type (unless the file type is 
+             exclusive to your application and proprietary) before requesting assignment.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">application.registerFileType(filetype)</code></pre>
+            </div>
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>filetype</td>
+                  <td class="fake-type">string</td>
+                  <td>A file extention without the leading period (e.g., txt, jpg)</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          
+            <h5>Returns</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td class="fake-type">boolean</td>
+                  <td>A true or false value indicating if the operation was successful.</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
 
           </div>
         
@@ -565,6 +732,67 @@ var returnedObject = application.registerHotKey('m','ctrl',function() {
                   <td>An object with the properites: {global,successful,unregister}. 'global' indicates if the hot key successfully registered beyond the
                   application context, 'successful' if the registeration was accepted by the OS, and 'unregister' is a 
                   function that can be executed to remove the hot key registration.</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          </div>
+        
+          <div class="title" id="registerScheme"> 
+            <i class="dropdown icon"></i> registerScheme(scheme)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Registers for the specified scheme (e.g., ftp, http, https).  If successful
+             the application is launched (if not running) and the application's 'open' event is fired with
+             the full URL when the user requests the url to be opened through the OS. This
+             is an expensive operation and should be run sparingly (usually only on install). If
+             the application is successfully assigned as the opener for the scheme the method returns true,
+             otherwise false.  This has undefined behavior if the application is not packaged or
+             bundled. Note, operating systems may reserve and protect specific schemes from 
+             being re-assigned for security and user experience reasons (such as tel on phones). 
+             This only needs to be executed once in the life time of the application being 
+             installed on the system. In addition applications that misbehave may find the OS will 
+             ignore these requests. It's generally best practice to check if the registered scheme 
+             is already assigned (using isRegisteredForScheme) before requesting assignment. As a general courtesy, 
+             ask the user to become the default handler for a scheme (unless the scheme is 
+             exclusive to your application and proprietary) before requesting assignment.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">application.registerScheme(scheme)</code></pre>
+            </div>
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>scheme</td>
+                  <td class="fake-type">string</td>
+                  <td>A URI scheme as a string (e.g., ftp, https, http)</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          
+            <h5>Returns</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td class="fake-type">boolean</td>
+                  <td>A true or false value indicating if the operation was successful.</td>
                 </tr>
               
               </tbody>
@@ -736,6 +964,33 @@ var returnedObject = application.registerHotKey('m','ctrl',function() {
       
 
 
+      
+      <section class="events">
+        <h2>Events</h2>
+        <div class="ui styled accordion">
+        
+          <div class="title" id="open"> <i class="dropdown icon"></i> open </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>The open event is fired when a file type or scheme that the application is assigned
+             to handle (through Application.registerScheme or Application.registerFileType) is 
+             attempted to be opened through a web browser, file browser, or through a seperate
+             application.  The first argument passed in is an array of url's requesting to be
+             opened. Note that if your application is not currently running your application is
+             automatically opened and the open event is fired immediately when an event handler
+             (function callback) is assigned to the open event.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">application.addEventListener('open', function() { ... });</code></pre>
+            </div>
+            
+
+            
+          </div>
+        
+        </div>
+      </section>
       
 
     </article>

@@ -66,6 +66,18 @@
     , "url": "Application.html#delete"
   }
   , {
+      "title": "Application.isRegisteredForFileType"
+    , "description": "Checks to see if the application is responsible for handling open requests from\n             the operating system for the specified file type extension (e.g., jpg, txt).\n             Returns a true or false boolean to indicate whether the application is registered\n             for the file type.  Note: this method has undefined behavior when the application\n             has not been bundled or packaged."
+    , "kind": "method"
+    , "url": "Application.html#isRegisteredForFileType"
+  }
+  , {
+      "title": "Application.isRegisteredForScheme"
+    , "description": "Checks to see if the application is responsible for handling open URI requests from\n             the operating system for the specified scheme (e.g., http, ftp, https, etc).\n             Returns a true or false boolean to indicate whether the application is registered\n             for the scheme.  Note: this method has undefined behavior when the application\n             has not been bundled or packaged."
+    , "kind": "method"
+    , "url": "Application.html#isRegisteredForScheme"
+  }
+  , {
       "title": "Application.paste"
     , "description": "Invokes a paste operation, this takes whatever is currently in the clipboard\n             and sends a paste operation to the focused window and control."
     , "kind": "method"
@@ -78,10 +90,22 @@
     , "url": "Application.html#redo"
   }
   , {
+      "title": "Application.registerFileType"
+    , "description": "Registers for the specified file type by its extension (e.g., txt, jpg, png). If successful\n             the application is launched (if not running) and the application's 'open' event is fired with\n             the location of the file when the user requests the file to be opened through the OS. This\n             is an expensive operation and should be run sparingly (usually only on install). If\n             the application is successfully assigned to the file type the method returns true,\n             otherwise false.  This has undefined behavior if the application is not packaged or\n             bundled. Note, operating systems may reserve and protect specific file types from \n             being re-assigned for security and user experience reasons. This only needs to be\n             executed once in the life time of the application being installed on the system. In\n             addition applications that misbehave may find the OS will ignore these requests. It's\n             generally best practice to check if the registered file type is already assigned \n             (using isRegisteredForFileType) before requesting assignment. As a general courtesy, \n             ask the user to become the default handler for a file type (unless the file type is \n             exclusive to your application and proprietary) before requesting assignment."
+    , "kind": "method"
+    , "url": "Application.html#registerFileType"
+  }
+  , {
       "title": "Application.registerHotKey"
     , "description": "The registerHotKey function attempts to assign a global hot key (or shortcut keyboard command) for the application. If a global\n             hot key cannot be registered it assignts it as a local (application) hot key, if that is unsuccessful the successful\n             property in the return object is set to false. Note the hot key may not be registered as a global\n             hot key depending on security settings on Windows, or due to accessibility settings on OSX.\n             Application entitlements or manually setting the application as an accessible or elevated privileged application will allow it\n             to register a global hot key. To register a normal hot key, it's customary to use the Menu and MenuItem classes."
     , "kind": "method"
     , "url": "Application.html#registerHotKey"
+  }
+  , {
+      "title": "Application.registerScheme"
+    , "description": "Registers for the specified scheme (e.g., ftp, http, https).  If successful\n             the application is launched (if not running) and the application's 'open' event is fired with\n             the full URL when the user requests the url to be opened through the OS. This\n             is an expensive operation and should be run sparingly (usually only on install). If\n             the application is successfully assigned as the opener for the scheme the method returns true,\n             otherwise false.  This has undefined behavior if the application is not packaged or\n             bundled. Note, operating systems may reserve and protect specific schemes from \n             being re-assigned for security and user experience reasons (such as tel on phones). \n             This only needs to be executed once in the life time of the application being \n             installed on the system. In addition applications that misbehave may find the OS will \n             ignore these requests. It's generally best practice to check if the registered scheme \n             is already assigned (using isRegisteredForScheme) before requesting assignment. As a general courtesy, \n             ask the user to become the default handler for a scheme (unless the scheme is \n             exclusive to your application and proprietary) before requesting assignment."
+    , "kind": "method"
+    , "url": "Application.html#registerScheme"
   }
   , {
       "title": "Application.removeEventListener"
@@ -112,6 +136,12 @@
     , "description": "Removes all hot keys assigned by the application (with the exception of Menu related hot keys)."
     , "kind": "method"
     , "url": "Application.html#unregisterAllHotKeys"
+  }
+  , {
+      "title": "Application.event:open"
+    , "description": "The open event is fired when a file type or scheme that the application is assigned\n             to handle (through Application.registerScheme or Application.registerFileType) is \n             attempted to be opened through a web browser, file browser, or through a seperate\n             application.  The first argument passed in is an array of url's requesting to be\n             opened. Note that if your application is not currently running your application is\n             automatically opened and the open event is fired immediately when an event handler\n             (function callback) is assigned to the open event."
+    , "kind": "event"
+    , "url": "Application.html#open"
   }
   , {
       "title": "Box"
@@ -336,6 +366,12 @@
     , "url": "Container.html"
   }
   , {
+      "title": "Container.children"
+    , "description": "List of children"
+    , "kind": "member"
+    , "url": "Container.html#children"
+  }
+  , {
       "title": "Container.appendChild"
     , "description": "Append child adds the passed in array (or several) controls as a children to this control."
     , "kind": "method"
@@ -348,6 +384,12 @@
     , "url": "Container.html#appendChild"
   }
   , {
+      "title": "Container.appendChildAt"
+    , "description": "Append child adds the passed in control as a child to this control."
+    , "kind": "method"
+    , "url": "Container.html#appendChildAt"
+  }
+  , {
       "title": "Container.removeChild"
     , "description": "Remove child removes the passed in control from the list of children controls it has."
     , "kind": "method"
@@ -358,6 +400,12 @@
     , "description": "The control class is the base class that provides all common methods used\n             and available on almost every Tint control.  This cannot be initialized on its own\n             as its only purpose is to provide common functionality to other controls. To\n             initialize a basic control use Container or Box."
     , "kind": "class"
     , "url": "Control.html"
+  }
+  , {
+      "title": "Control.acceptsDroppedTypes"
+    , "description": "Is an array of types of content that are accepted for drag and drop operations\n             This may be 'text', 'image', 'rtf', 'html', 'video', 'audio', or 'file' types. For\n             custom types any unique string identifier may be used. On OSX its typical to use UTI's\n             while on windows mime types are preferred. Note this must be set to receive any drop\n             events.  See the drop and dropped event for more information on receiving drag and drop items."
+    , "kind": "member"
+    , "url": "Control.html#acceptsDroppedTypes"
   }
   , {
       "title": "Control.alpha"
@@ -462,10 +510,52 @@
     , "url": "Control.html#focus"
   }
   , {
+      "title": "Control.moveAbove"
+    , "description": "Moves the rendering of the control above the z-index of the target control. \n             Passing in null tries to move the control to the very top above all others."
+    , "kind": "method"
+    , "url": "Control.html#moveAbove"
+  }
+  , {
+      "title": "Control.moveBelow"
+    , "description": "Moves the rendering of the control below the z-index of the target control. \n             Passing in null tries to move the control to the very top above all others."
+    , "kind": "method"
+    , "url": "Control.html#moveBelow"
+  }
+  , {
       "title": "Control.removeEventListener"
     , "description": "Removes an event listener for various control level events. The first\n             parameter is the name of the event, the second parameter is the function\n             that was originally given as the callback for addEventListener."
     , "kind": "method"
     , "url": "Control.html#removeEventListener"
+  }
+  , {
+      "title": "Control.event:dragenter"
+    , "description": "Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into \n             the view."
+    , "kind": "event"
+    , "url": "Control.html#dragenter"
+  }
+  , {
+      "title": "Control.event:dragexit"
+    , "description": "Fires when acceptsDroppedTypes is set to a type(s) and data of that type was dragged into \n             the view, and is now exiting."
+    , "kind": "event"
+    , "url": "Control.html#dragexit"
+  }
+  , {
+      "title": "Control.event:drop"
+    , "description": "Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into \n             the view and is being dropped into the view."
+    , "kind": "event"
+    , "url": "Control.html#drop"
+  }
+  , {
+      "title": "Control.event:dropped"
+    , "description": "Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into \n             the view and was dropped into the view's control.  This must return 'true' or 'false' to\n             indicate if it accepts or declines the drop request.  The callback for this event is \n             executed with an array passed in of the objects that were dropped.  The object contains\n             a type field that is the type of the dropped item, the data field contains a Buffer data\n             object for the data that was dropped. IMPORTANT: File and URL types may not necessarily\n             contain the contents of the URL or FILE, they have the location of the file or url as a string."
+    , "kind": "event"
+    , "url": "Control.html#dropped"
+  }
+  , {
+      "title": "Control.event:dropping"
+    , "description": "Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into \n             the view and is now ending. Note this does not indicate the success or failure of the drag\n             operation, only that it has finished."
+    , "kind": "event"
+    , "url": "Control.html#dropping"
   }
   , {
       "title": "Control.event:keydown"
@@ -1080,6 +1170,12 @@
     , "url": "Notification.html#Notification"
   }
   , {
+      "title": "Notification.event:click"
+    , "description": "Fires when a user presses a button on the notification, the first parameter passed in\n             to the callback on the event indicates the area that was clicked.  The value is either\n             'contents', 'button' or 'unknown'."
+    , "kind": "event"
+    , "url": "Notification.html#click"
+  }
+  , {
       "title": "Panel"
     , "description": "A Panel is similar to a window although it should be viewed as either a utility or tool window.\n             It differs from a regular Window in that: It uses a smaller title bar, and does not have minimize\n             or maximize capabilities.  It uses slightly different styles than a normal window. It disappears\n             automatically if the application looses focus and reappears when it regains it. Panels are useful as \n             \"Tool\" windows.  For example, in Photoshop the floating set of buttons to select the current action \n             (select, bucket, fill, etc) would be a panel.\n             Panels inherit all of the capabilities with the exception of window state capabilities (maximize, minimize\n             and fullscreen)."
     , "kind": "class"
@@ -1240,6 +1336,18 @@
     , "description": "Creates a new scroll container."
     , "kind": "constructor"
     , "url": "Scroll.html#Scroll"
+  }
+  , {
+      "title": "SecureTextInput"
+    , "description": "Creates a secure text label or text input area for the user to\n             provide a free-form value from the keyboard. This inherits all of the TextInput capabilities."
+    , "kind": "class"
+    , "url": "SecureTextInput.html"
+  }
+  , {
+      "title": "SecureTextInput.SecureTextInput"
+    , "description": "Creates a new SecureTextInput control."
+    , "kind": "constructor"
+    , "url": "SecureTextInput.html#SecureTextInput"
   }
   , {
       "title": "SelectInput"
@@ -1446,6 +1554,12 @@
     , "url": "System.html#home"
   }
   , {
+      "title": "System.mousePosition"
+    , "description": "Contains an object with the 'x' and 'y' properties with the current position of\n             the mouse cursor in context to the active screen."
+    , "kind": "member"
+    , "url": "System.html#mousePosition"
+  }
+  , {
       "title": "System.beep"
     , "description": "Plays the default alert noise for the OS. This may produce visual effects if the user\n             has accessibility features enabled."
     , "kind": "method"
@@ -1453,13 +1567,13 @@
   }
   , {
       "title": "System.clickAt"
-    , "description": "Left clicks at the specified X, Y coordinates. This causes a\n             real left click mouse event within the operating system \n             at the specified coordinates and is not simulated."
+    , "description": "Left clicks at the specified X, Y coordinates. This causes a\n             real left click mouse event within the operating system \n             at the specified coordinates and is not simulated. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#clickAt"
   }
   , {
       "title": "System.clickAtControl"
-    , "description": "Left clicks at the center of the specified Tint Control. This causes a\n             real left click event within the operating system and is not simulated."
+    , "description": "Left clicks at the center of the specified Tint Control. This causes a\n             real left click event within the operating system and is not simulated. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#clickAtControl"
   }
@@ -1494,20 +1608,14 @@
     , "url": "System.html#getIconForFile"
   }
   , {
-      "title": "System.keyAtControl"
-    , "description": "Sends a key down and key up event through the OS, note the currently focused application, window and \n             control will receive this event (and may not be the running application)."
-    , "kind": "method"
-    , "url": "System.html#keyAtControl"
-  }
-  , {
       "title": "System.mouseDownAt"
-    , "description": "Sends a left 'mouse down' at the specified X, Y coordinates. This causes a\n             real left click mouse down event within the operating system \n             at the specified coordinates and is not simulated."
+    , "description": "Sends a left 'mouse down' at the specified X, Y coordinates. This causes a\n             real left click mouse down event within the operating system \n             at the specified coordinates and is not simulated. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#mouseDownAt"
   }
   , {
       "title": "System.mouseUpAt"
-    , "description": "Sends a left 'mouse up' at the specified X, Y coordinates. This causes a\n             real left click mouse up event within the operating system \n             at the specified coordinates and is not simulated."
+    , "description": "Sends a left 'mouse up' at the specified X, Y coordinates. This causes a\n             real left click mouse up event within the operating system \n             at the specified coordinates and is not simulated.  This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#mouseUpAt"
   }
@@ -1525,27 +1633,33 @@
   }
   , {
       "title": "System.rightClickAt"
-    , "description": "Right clicks at the specified control. This causes a\n             real right-click mouse event within the operating system \n             at the specified coordinates and is not simulated."
+    , "description": "Right clicks at the specified control. This causes a\n             real right-click mouse event within the operating system \n             at the specified coordinates and is not simulated. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#rightClickAt"
   }
   , {
       "title": "System.rightClickAtControl"
-    , "description": "The right click at control method can be used for testing.  This causes a\n             real right-click event within the operating system and is not simulated."
+    , "description": "The right click at control method can be used for testing.  This causes a\n             real right-click event within the operating system and is not simulated. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#rightClickAtControl"
   }
   , {
       "title": "System.scrollAt"
-    , "description": "Sends a scroll event through the operating system at the specified X, Y\n             coordinates, note this is not simulated."
+    , "description": "Sends a scroll event through the operating system at the specified X, Y\n             coordinates, note this is not simulated. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#scrollAt"
   }
   , {
       "title": "System.scrollAtControl"
-    , "description": "Scrolls a control vertically up or down based on the value of upOrDown."
+    , "description": "Scrolls a control vertically up or down based on the value of upOrDown. This is mainly used for\n             testing and should be avoided in production applications."
     , "kind": "method"
     , "url": "System.html#scrollAtControl"
+  }
+  , {
+      "title": "System.sendKey"
+    , "description": "Sends a key down and key up event through the OS, note the currently focused application, window and \n             control will receive this event (and may not be the running application).  This is mainly used for\n             testing and should be avoided in production applications."
+    , "kind": "method"
+    , "url": "System.html#sendKey"
   }
   , {
       "title": "System.showFile"
@@ -1705,13 +1819,13 @@
   }
   , {
       "title": "Table.setValueAt"
-    , "description": "Set the value of the specified cell at the column indicated by columnName, \n             and the row indicated by rowIndex.  The value can be either a user interface control\n             string.  IMPORTANT: It is best practice for performance to reuse table cells\n             for large data sets."
+    , "description": "Set the value of the specified cell at the column indicated by columnName, \n             and the row indicated by rowIndex.  The value can be either a user interface control\n             string. IMPORTANT: It is best practice for performance to reuse table cells\n             for large data sets."
     , "kind": "method"
     , "url": "Table.html#setValueAt"
   }
   , {
       "title": "Table.setValueAt"
-    , "description": "Set the value of the specified cell at the column indicated by columnName, \n             and the row indicated by rowIndex.  The value can be either a user interface control\n             string. IMPORTANT: It is best practice for performance to reuse table cells\n             for large data sets."
+    , "description": "Set the value of the specified cell at the column indicated by columnName, \n             and the row indicated by rowIndex.  The value can be either a user interface control\n             string.  IMPORTANT: It is best practice for performance to reuse table cells\n             for large data sets."
     , "kind": "method"
     , "url": "Table.html#setValueAt"
   }
@@ -1960,6 +2074,12 @@
     , "description": "Moves to the previously rendered page.  If no previously rendered page is available this takes no action."
     , "kind": "method"
     , "url": "WebView.html#back"
+  }
+  , {
+      "title": "WebView.boundsOfElement"
+    , "description": "Returns an object with a x, y, width and height relative to the web view for any css query selector\n             passed in for the first argument, the second argument is the callback to receive the result (as its first argument).\n             This is mainly useful as a means for unit testing web pages and checking for elements positions."
+    , "kind": "method"
+    , "url": "WebView.html#boundsOfElement"
   }
   , {
       "title": "WebView.execute"

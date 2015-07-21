@@ -98,6 +98,8 @@
         
         <a class="item" href="Scroll.html"> Scroll </a>
         
+        <a class="item" href="SecureTextInput.html"> SecureTextInput </a>
+        
         <a class="item" href="SelectInput.html"> SelectInput </a>
         
         <a class="item" href="Slider.html"> Slider </a>
@@ -210,6 +212,29 @@
 
 
       
+      <section class="members">
+        <h2>Members</h2>
+        <div class="ui styled accordion">
+        
+          <div class="title" id="children"> <i class="dropdown icon"></i> children </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>List of children</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <span class="fake-type">Array</span></span>
+              <span class="fake-name">container.children</span>
+              <span class="fake-note">(default [])</span>
+            </div>
+            
+            
+            
+          </div>
+        
+        </div>
+      </section>
+      
 
 
       
@@ -277,6 +302,47 @@
                   <td>control</td>
                   <td class="fake-type">Control</td>
                   <td>A control to add as a child to this control.</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          
+
+          </div>
+        
+          <div class="title" id="appendChildAt"> 
+            <i class="dropdown icon"></i> appendChildAt(control, index)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Append child adds the passed in control as a child to this control.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">container.appendChildAt(control, index)</code></pre>
+            </div>
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>control</td>
+                  <td class="fake-type">Control</td>
+                  <td>A control to add as a child to this control.</td>
+                </tr>
+              
+                <tr>
+                  <td>index</td>
+                  <td class="fake-type">number</td>
+                  <td>The index spot to add the control tp.</td>
                 </tr>
               
               </tbody>

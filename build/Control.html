@@ -98,6 +98,8 @@
         
         <a class="item" href="Scroll.html"> Scroll </a>
         
+        <a class="item" href="SecureTextInput.html"> SecureTextInput </a>
+        
         <a class="item" href="SelectInput.html"> SelectInput </a>
         
         <a class="item" href="Slider.html"> Slider </a>
@@ -186,6 +188,26 @@
       <section class="members">
         <h2>Members</h2>
         <div class="ui styled accordion">
+        
+          <div class="title" id="acceptsDroppedTypes"> <i class="dropdown icon"></i> acceptsDroppedTypes </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Is an array of types of content that are accepted for drag and drop operations
+             This may be 'text', 'image', 'rtf', 'html', 'video', 'audio', or 'file' types. For
+             custom types any unique string identifier may be used. On OSX its typical to use UTI's
+             while on windows mime types are preferred. Note this must be set to receive any drop
+             events.  See the drop and dropped event for more information on receiving drag and drop items.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <span class="fake-type">Array</span></span>
+              <span class="fake-name">control.acceptsDroppedTypes</span>
+              
+            </div>
+            
+            
+            
+          </div>
         
           <div class="title" id="alpha"> <i class="dropdown icon"></i> alpha </div>
           <div class="content">
@@ -1071,6 +1093,50 @@ buttonNormal.addEventListener('mousedown', function() {
 
           </div>
         
+          <div class="title" id="moveAbove"> 
+            <i class="dropdown icon"></i> moveAbove()
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Moves the rendering of the control above the z-index of the target control. 
+             Passing in null tries to move the control to the very top above all others.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.moveAbove()</code></pre>
+            </div>
+            
+            
+            
+
+            
+
+          
+
+          </div>
+        
+          <div class="title" id="moveBelow"> 
+            <i class="dropdown icon"></i> moveBelow()
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Moves the rendering of the control below the z-index of the target control. 
+             Passing in null tries to move the control to the very top above all others.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.moveBelow()</code></pre>
+            </div>
+            
+            
+            
+
+            
+
+          
+
+          </div>
+        
           <div class="title" id="removeEventListener"> 
             <i class="dropdown icon"></i> removeEventListener(eventName, callback)
           </div>
@@ -1153,6 +1219,87 @@ buttonNormal.removeEventListener('mousedown', mouseDown);</code></pre>
       <section class="events">
         <h2>Events</h2>
         <div class="ui styled accordion">
+        
+          <div class="title" id="dragenter"> <i class="dropdown icon"></i> dragenter </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into 
+             the view.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.addEventListener('dragenter', function() { ... });</code></pre>
+            </div>
+            
+
+            
+          </div>
+        
+          <div class="title" id="dragexit"> <i class="dropdown icon"></i> dragexit </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Fires when acceptsDroppedTypes is set to a type(s) and data of that type was dragged into 
+             the view, and is now exiting.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.addEventListener('dragexit', function() { ... });</code></pre>
+            </div>
+            
+
+            
+          </div>
+        
+          <div class="title" id="drop"> <i class="dropdown icon"></i> drop </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into 
+             the view and is being dropped into the view.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.addEventListener('drop', function() { ... });</code></pre>
+            </div>
+            
+
+            
+          </div>
+        
+          <div class="title" id="dropped"> <i class="dropdown icon"></i> dropped </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into 
+             the view and was dropped into the view's control.  This must return 'true' or 'false' to
+             indicate if it accepts or declines the drop request.  The callback for this event is 
+             executed with an array passed in of the objects that were dropped.  The object contains
+             a type field that is the type of the dropped item, the data field contains a Buffer data
+             object for the data that was dropped. IMPORTANT: File and URL types may not necessarily
+             contain the contents of the URL or FILE, they have the location of the file or url as a string.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.addEventListener('dropped', function() { ... });</code></pre>
+            </div>
+            
+
+            
+          </div>
+        
+          <div class="title" id="dropping"> <i class="dropdown icon"></i> dropping </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Fires when acceptsDroppedTypes is set to a type(s) and data of that type is dragged into 
+             the view and is now ending. Note this does not indicate the success or failure of the drag
+             operation, only that it has finished.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">control.addEventListener('dropping', function() { ... });</code></pre>
+            </div>
+            
+
+            
+          </div>
         
           <div class="title" id="keydown"> <i class="dropdown icon"></i> keydown </div>
           <div class="content">

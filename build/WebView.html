@@ -98,6 +98,8 @@
         
         <a class="item" href="Scroll.html"> Scroll </a>
         
+        <a class="item" href="SecureTextInput.html"> SecureTextInput </a>
+        
         <a class="item" href="SelectInput.html"> SelectInput </a>
         
         <a class="item" href="Slider.html"> Slider </a>
@@ -432,6 +434,75 @@ setTimeout(function() { console.log(webView.useragent); }, 2000);</code></pre>
             
             
 
+            
+
+          
+
+          </div>
+        
+          <div class="title" id="boundsOfElement"> 
+            <i class="dropdown icon"></i> boundsOfElement(selector, callback)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Returns an object with a x, y, width and height relative to the web view for any css query selector
+             passed in for the first argument, the second argument is the callback to receive the result (as its first argument).
+             This is mainly useful as a means for unit testing web pages and checking for elements positions.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">webview.boundsOfElement(selector, callback)</code></pre>
+            </div>
+            
+              
+            <div class="ui message example">
+              <h3>Example</h3>
+              <pre><code class="javascript">require('Common');
+var win = new Window();
+win.visible = true;
+var webView = new WebView();
+win.appendChild(webView);
+webView.left=webView.top=webView.right=webView.bottom=0;
+webView.location = "somewebpage.html";
+webView.addEventListener('load', function() {
+  webView.boundsOfElement('.someclass', function(rect) { 
+    console.log('.someclass was ' + rect.width + ' wide ' + rect.height + ' tall.'); 
+  });
+});</code></pre>
+              
+              
+<div class="screenshots">
+
+</div>
+            </div>
+              
+            
+            
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>selector</td>
+                  <td class="fake-type">string</td>
+                  <td>A css selector (e.g., the same as querySelector) to find on the page. (#someid or .someclass)</td>
+                </tr>
+              
+                <tr>
+                  <td>callback</td>
+                  <td class="fake-type">function</td>
+                  <td>The function which is called when the execution finishes.  The result is an object with 
+                           width, height, x, and y properties that are passed as the first argument.</td>
+                </tr>
+              
+              </tbody>
+            </table>
             
 
           

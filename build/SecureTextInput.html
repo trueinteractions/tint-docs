@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tint :: Button</title>
+  <title>Tint :: SecureTextInput</title>
   <link href="vendor/semantic-ui/semantic.css" rel="stylesheet" type="text/css" media="all"></link>
   <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" media="all"></link>
   <link href="style/tint.css" rel="stylesheet" type="text/css" media="all"></link>
@@ -136,10 +136,11 @@
     <article class="sixteen wide column">
 
       <section class="overview">
-        <h1>Button</h1>
+        <h1>SecureTextInput</h1>
           <div class="ui message overview">
           <h3>Overview</h3>
-          <p>Creates a button for the user to active or indicate status or steps.</p>
+          <p>Creates a secure text label or text input area for the user to
+             provide a free-form value from the keyboard. This inherits all of the TextInput capabilities.</p>
         </div>
         <div class="ui grid family">
           <div class="four wide column ancestors">
@@ -149,6 +150,8 @@
               <li><a href="Control.html">Control</a></li>
               
               <li><a href="Container.html">Container</a></li>
+              
+              <li><a href="TextInput.html">TextInput</a></li>
               
             </ol>
           </div>
@@ -175,18 +178,18 @@
         <h2>Constructors</h2>
         <div class="ui styled accordion">
         
-          <div class="title" id="Button">
+          <div class="title" id="SecureTextInput">
             <i class="dropdown icon"></i> 
             <span class="fake-type">new</span> 
-            Button 
+            SecureTextInput 
           </div>
           <div class="content">
             <div class="accordion-box"></div>
             <h5>Description</h5>
-            <p>Creates a new Button control.</p>
+            <p>Creates a new SecureTextInput control.</p>
             <div class="ui message note">
               <h3>Definition</h3>
-              <pre><code class="javascript">new Button()</code></pre>
+              <pre><code class="javascript">new SecureTextInput()</code></pre>
             </div>
             
           </div>
@@ -196,116 +199,6 @@
       
 
 
-      
-      <section class="members">
-        <h2>Members</h2>
-        <div class="ui styled accordion">
-        
-          <div class="title" id="border"> <i class="dropdown icon"></i> border </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Gets or sets whether the button has a border around it.</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <span class="fake-type">boolean</span></span>
-              <span class="fake-name">button.border</span>
-              <span class="fake-note">(default true)</span>
-            </div>
-            
-            
-            
-          </div>
-        
-          <div class="title" id="enabled"> <i class="dropdown icon"></i> enabled </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Gets or sets the buttons availability and visual presentation to the user.
-             When set to false the button is grayed out and does not respond to clicks.
-             The default is true.</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <span class="fake-type">string</span></span>
-              <span class="fake-name">button.enabled</span>
-              <span class="fake-note">(default true)</span>
-            </div>
-            
-            
-            
-          </div>
-        
-          <div class="title" id="image"> <i class="dropdown icon"></i> image </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Gets or sets the associated image to be displayed on the button.  This can be
-             a named icon resource for the OS, or a URL to an image (including the app:// schema).</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <span class="fake-type">string</span></span>
-              <span class="fake-name">button.image</span>
-              
-            </div>
-            
-            
-            
-          </div>
-        
-          <div class="title" id="state"> <i class="dropdown icon"></i> state </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Gets or sets whether the button is "on" or "off". This has different
-             meanings depending on the type of button, for radio, checkbox and 
-             toggle type buttons this changes its visual style. This has no meaning
-             (visually) for normal buttons. The default is false.</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <span class="fake-type">boolean</span></span>
-              <span class="fake-name">button.state</span>
-              <span class="fake-note">(default false)</span>
-            </div>
-            
-            
-            
-          </div>
-        
-          <div class="title" id="title"> <i class="dropdown icon"></i> title </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Gets or sets the text label on the button.</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <span class="fake-type">string</span></span>
-              <span class="fake-name">button.title</span>
-              
-            </div>
-            
-            
-            
-          </div>
-        
-          <div class="title" id="type"> <i class="dropdown icon"></i> type </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Gets or sets the type of button, this can be 
-             "toggle", "checkbox", "radio" or "normal".</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <span class="fake-type">string</span></span>
-              <span class="fake-name">button.type</span>
-              
-            </div>
-            
-            
-            
-          </div>
-        
-        </div>
-      </section>
       
 
 

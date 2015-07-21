@@ -98,6 +98,8 @@
         
         <a class="item" href="Scroll.html"> Scroll </a>
         
+        <a class="item" href="SecureTextInput.html"> SecureTextInput </a>
+        
         <a class="item" href="SelectInput.html"> SelectInput </a>
         
         <a class="item" href="Slider.html"> Slider </a>
@@ -189,6 +191,23 @@
             
           </div>
         
+          <div class="title" id="mousePosition"> <i class="dropdown icon"></i> mousePosition </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Contains an object with the 'x' and 'y' properties with the current position of
+             the mouse cursor in context to the active screen.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <span class="fake-type"><span class="type-signature"></span></span>
+              <span class="fake-name">system.mousePosition</span>
+              
+            </div>
+            
+            
+            
+          </div>
+        
         </div>
       </section>
       
@@ -229,7 +248,8 @@
             <h5>Description</h5>
             <p>Left clicks at the specified X, Y coordinates. This causes a
              real left click mouse event within the operating system 
-             at the specified coordinates and is not simulated.</p>
+             at the specified coordinates and is not simulated. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.clickAt(x, y)</code></pre>
@@ -273,7 +293,8 @@
             <div class="accordion-box"></div>
             <h5>Description</h5>
             <p>Left clicks at the center of the specified Tint Control. This causes a
-             real left click event within the operating system and is not simulated.</p>
+             real left click event within the operating system and is not simulated. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.clickAtControl(control)</code></pre>
@@ -446,6 +467,22 @@
             
 
           
+            <h5>Returns</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td class="fake-type">Object</td>
+                  <td>An object with one function, "release" which releases the data back to memory once
+                  it should no longer be available in the clipboard.  IMPORTANT: Data placed in the
+                  clipboard is not automatically memory managed on some platforms, ensure you release
+                  data before setting new data on the clipboard as a precautionary measure.</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
 
           </div>
         
@@ -484,44 +521,6 @@
 
           </div>
         
-          <div class="title" id="keyAtControl"> 
-            <i class="dropdown icon"></i> keyAtControl(input)
-          </div>
-          <div class="content">
-            <div class="accordion-box"></div>
-            <h5>Description</h5>
-            <p>Sends a key down and key up event through the OS, note the currently focused application, window and 
-             control will receive this event (and may not be the running application).</p>
-            <div class="ui message note">
-              <h3>Definition</h3>
-              <pre><code class="javascript">system.keyAtControl(input)</code></pre>
-            </div>
-            
-            
-            
-
-            
-            <h5>Parameters</h5>
-            <table class="ui table parameters">
-              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-              <tbody>
-              
-                <tr>
-                  <td>input</td>
-                  <td class="fake-type">string</td>
-                  <td>The character to send as a key up and key down event. Note this must be one single character
-                      e.g., 'a', 'b', or 'A', or 'B'.  For a carrage return use 'ENTER' or 'RETURN', for shift use
-                      'SHIFT', etc.</td>
-                </tr>
-              
-              </tbody>
-            </table>
-            
-
-          
-
-          </div>
-        
           <div class="title" id="mouseDownAt"> 
             <i class="dropdown icon"></i> mouseDownAt(x, y)
           </div>
@@ -530,7 +529,8 @@
             <h5>Description</h5>
             <p>Sends a left 'mouse down' at the specified X, Y coordinates. This causes a
              real left click mouse down event within the operating system 
-             at the specified coordinates and is not simulated.</p>
+             at the specified coordinates and is not simulated. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.mouseDownAt(x, y)</code></pre>
@@ -575,7 +575,8 @@
             <h5>Description</h5>
             <p>Sends a left 'mouse up' at the specified X, Y coordinates. This causes a
              real left click mouse up event within the operating system 
-             at the specified coordinates and is not simulated.</p>
+             at the specified coordinates and is not simulated.  This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.mouseUpAt(x, y)</code></pre>
@@ -690,7 +691,8 @@
             <h5>Description</h5>
             <p>Right clicks at the specified control. This causes a
              real right-click mouse event within the operating system 
-             at the specified coordinates and is not simulated.</p>
+             at the specified coordinates and is not simulated. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.rightClickAt(x, y)</code></pre>
@@ -734,7 +736,8 @@
             <div class="accordion-box"></div>
             <h5>Description</h5>
             <p>The right click at control method can be used for testing.  This causes a
-             real right-click event within the operating system and is not simulated.</p>
+             real right-click event within the operating system and is not simulated. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.rightClickAtControl(control)</code></pre>
@@ -771,7 +774,8 @@
             <div class="accordion-box"></div>
             <h5>Description</h5>
             <p>Sends a scroll event through the operating system at the specified X, Y
-             coordinates, note this is not simulated.</p>
+             coordinates, note this is not simulated. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.scrollAt(x, y, upOrDown)</code></pre>
@@ -820,7 +824,8 @@
           <div class="content">
             <div class="accordion-box"></div>
             <h5>Description</h5>
-            <p>Scrolls a control vertically up or down based on the value of upOrDown.</p>
+            <p>Scrolls a control vertically up or down based on the value of upOrDown. This is mainly used for
+             testing and should be avoided in production applications.</p>
             <div class="ui message note">
               <h3>Definition</h3>
               <pre><code class="javascript">system.scrollAtControl(control, upOrDown)</code></pre>
@@ -845,6 +850,45 @@
                   <td>upOrDown</td>
                   <td class="fake-type">boolean</td>
                   <td>The direction to scroll vertically up or down (true/false).</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+
+          
+
+          </div>
+        
+          <div class="title" id="sendKey"> 
+            <i class="dropdown icon"></i> sendKey(input)
+          </div>
+          <div class="content">
+            <div class="accordion-box"></div>
+            <h5>Description</h5>
+            <p>Sends a key down and key up event through the OS, note the currently focused application, window and 
+             control will receive this event (and may not be the running application).  This is mainly used for
+             testing and should be avoided in production applications.</p>
+            <div class="ui message note">
+              <h3>Definition</h3>
+              <pre><code class="javascript">system.sendKey(input)</code></pre>
+            </div>
+            
+            
+            
+
+            
+            <h5>Parameters</h5>
+            <table class="ui table parameters">
+              <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+              
+                <tr>
+                  <td>input</td>
+                  <td class="fake-type">string</td>
+                  <td>The character to send as a key up and key down event. Note this must be one single character
+                      e.g., 'a', 'b', or 'A', or 'B'.  For a carrage return use 'ENTER' or 'RETURN', for shift use
+                      'SHIFT', etc.</td>
                 </tr>
               
               </tbody>
